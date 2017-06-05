@@ -15,11 +15,11 @@ stages:
 variables:
   STAGING_REGISTRY: registry.gitlab.com
   STAGING_NAMESPACE: jrbeverly-docker
-  STAGING_PROJECT: docker-rsvg
+  STAGING_PROJECT: docker-minify
 
   REGISTRY: docker.io
   NAMESPACE: jrbeverly
-  PROJECT: rsvg
+  PROJECT: minify
 
   GIT_COMMIT: ${CI_COMMIT_SHA}
   TAG_PREFIX: ${CI_PIPELINE_ID}-
