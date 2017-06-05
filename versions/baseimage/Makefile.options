@@ -2,8 +2,7 @@
 TAG := baseimage
 
 # Build Args
-USER := docker
-BUILD_PARAMS := --build-arg USER="${USER}"
+BUILD_PARAMS := --build-arg USER="docker" --build-arg MINIFY_URL="github.com/tdewolff/minify/cmd/minify"
 
 # Filepath
 PATH_DOCKER := $(PATH_ROOT)/src

@@ -1,4 +1,4 @@
-# Dockerized librsvg
+# Dockerized Minify
 [![Image][image-badge]][image-link]
 [![License][license-badge]][license-link]
 [![Build][build-badge]][build-link]
@@ -14,14 +14,14 @@
 
 ## Summary
 
-A super small Alpine image with rsvg-convert installed.
+A super small Alpine image with a web minifier installed.
 
 ## Usage
 
-You can use this image locally with `docker run`, calling [`rsvg-convert`](http://manpages.ubuntu.com/manpages/zesty/man1/rsvg-convert.1.html) as such:
+You can use this image locally with `docker run`, calling as such:
 
 ```console
-docker run -v /media/:/media/ jrbeverly/rsvg:baseimage rsvg-convert test.svg -o test.png
+docker run -v $(pwd):/media/ jrbeverly/minify:baseimage minify index.html
 ```
 
 ### Gitlab
@@ -29,22 +29,22 @@ You can setup a build job using `.gitlab-ci.yml`:
 
 ```yaml
 compile_pdf:
-  image: jrbeverly/rsvg:baseimage
+  image: jrbeverly/minify:baseimage
   script:
-    - rsvg-convert test.svg -o test.png
+    - minify index.html
   artifacts:
     paths:
-      - test.png
+      - index.html
 ```
 
 ## Image Tags
 
-Build tags available with the image `jrbeverly/rsvg:{TAG}`.
+Build tags available with the image `jrbeverly/minify:{TAG}`.
 
 | Tag | Status | Description |
 | --- | ------ | ----------- |
-| [![Version base][base-badge]][base-link] | [![Image base][base-image-badge]][base-link] | A docker image with librsvg installed, running as docker user (`DUID`). |
-| [![Version privileged][privileged-badge]][privileged-link] | [![Image privileged][privileged-image-badge]][privileged-link]  | A docker image with librsvg installed. |
+| [![Version base][base-badge]][base-link] | [![Image base][base-image-badge]][base-link] | A docker image with minify installed, running as docker user (`DUID`). |
+| [![Version privileged][privileged-badge]][privileged-link] | [![Image privileged][privileged-image-badge]][privileged-link]  | A docker image with minify installed. |
 
 ## Components
 
@@ -65,6 +65,7 @@ Build arguments used in the system.
 | Variable | Value | Description |
 | -------- | ------- |------------ |
 | USER | see [Makefile](build/Makefile) | Sets the [user](http://www.linfo.org/uid.html) to use when running the image. |
+| MINIFY_URL | see [Makefile](build/Makefile) | Sets the URL to install the application from. |
 
 ### Volumes
 
@@ -114,19 +115,19 @@ docker inspect -f '{{ index .Config.Labels "io.jrbeverly.group" }}' IMAGE
 
 The notation of the build variables is short form for docker user id (`DUID`) and docker group id (`DGID`). 
 
-[build-badge]: https://gitlab.com/jrbeverly-docker/docker-rsvg/badges/master/build.svg
-[build-link]: https://gitlab.com/jrbeverly-docker/docker-rsvg/commits/master
+[build-badge]: https://gitlab.com/jrbeverly-docker/docker-minify/badges/master/build.svg
+[build-link]: https://gitlab.com/jrbeverly-docker/docker-minify/commits/master
 
-[license-badge]: https://images.microbadger.com/badges/license/jrbeverly/rsvg.svg
-[license-link]: https://microbadger.com/images/jrbeverly/rsvg "Get your own license badge on microbadger.com"
+[license-badge]: https://images.microbadger.com/badges/license/jrbeverly/minify.svg
+[license-link]: https://microbadger.com/images/jrbeverly/minify "Get your own license badge on microbadger.com"
 
-[image-badge]: https://img.shields.io/badge/alpine-3.5-orange.svg?maxAge=2592000
+[image-badge]: https://img.shields.io/badge/golang-latest-orange.svg?maxAge=2592000
 [image-link]: https://hub.docker.com/r/jrbeverly/baseimage/
 
-[base-badge]: https://images.microbadger.com/badges/version/jrbeverly/rsvg:baseimage.svg
-[base-image-badge]: https://images.microbadger.com/badges/image/jrbeverly/rsvg:baseimage.svg
-[base-link]: https://microbadger.com/images/jrbeverly/rsvg:baseimage "Get your own version badge on microbadger.com"
+[base-badge]: https://images.microbadger.com/badges/version/jrbeverly/minify:baseimage.svg
+[base-image-badge]: https://images.microbadger.com/badges/image/jrbeverly/minify:baseimage.svg
+[base-link]: https://microbadger.com/images/jrbeverly/minify:baseimage "Get your own version badge on microbadger.com"
 
-[privileged-badge]: https://images.microbadger.com/badges/version/jrbeverly/rsvg:privileged.svg
-[privileged-image-badge]: https://images.microbadger.com/badges/image/jrbeverly/rsvg:privileged.svg
-[privileged-link]: https://microbadger.com/images/jrbeverly/rsvg:privileged "Get your own version badge on microbadger.com"
+[privileged-badge]: https://images.microbadger.com/badges/version/jrbeverly/minify:privileged.svg
+[privileged-image-badge]: https://images.microbadger.com/badges/image/jrbeverly/minify:privileged.svg
+[privileged-link]: https://microbadger.com/images/jrbeverly/minify:privileged "Get your own version badge on microbadger.com"
