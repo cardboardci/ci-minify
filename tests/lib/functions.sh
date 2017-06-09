@@ -6,15 +6,21 @@
 
 install()
 {
-    apk add --update zip >/dev/null 2>&1
+    apt-get update >/dev/null 2>&1
+    apt-get install -y zip >/dev/null 2>&1
 }
 
-minify()
+go_version()
 {
-    minify -V
+    go version >/dev/null 2>&1
+}
+
+minify_version()
+{
+    minify --version >/dev/null 2>&1
 }
 
 simple_site()
 {
-    minify -o target/ resources/
+    minify -o target/ resources/ >/dev/null 2>&1
 }

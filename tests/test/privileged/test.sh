@@ -30,12 +30,17 @@ DIR_TARGET="${DIR_TESTS}/target"
     )
 
     (
-      RESULT=$(minify)
+      RESULT=$(go_version)
+      assertEquals "go is installed" 0 $?
+    )
+    
+    (
+      RESULT=$(minify_version)
       assertEquals "minify is installed" 0 $?
     )
 
     (
-      RESULT=$(simple_svg)
+      RESULT=$(simple_site)
       assertEquals "minify a simple site" 0 $?
     )
 )

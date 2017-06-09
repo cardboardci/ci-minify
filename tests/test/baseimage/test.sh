@@ -23,19 +23,24 @@ DIR_TARGET="${DIR_TESTS}/target"
 (
     rm -rf $DIR_TARGET
     mkdir -p $DIR_TARGET
-    
+
     (
       RESULT=$(install)
       assertNotEquals "cannot install to image" 0 $?
     )
 
     (
-      RESULT=$(minify)
+      RESULT=$(go_version)
+      assertEquals "go is installed" 0 $?
+    )
+
+    (
+      RESULT=$(minify_version)
       assertEquals "minify is installed" 0 $?
     )
 
     (
-      RESULT=$(simple_svg)
+      RESULT=$(simple_site)
       assertEquals "minify a simple site" 0 $?
     )
 )
