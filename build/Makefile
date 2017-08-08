@@ -10,6 +10,8 @@ TAG_SUFFIX ?=
 TAG_PREFIX ?=
 BUILD_PARAMETERS =
 
+include $(PATH_INFO)/*.variable
+
 # Validation
 #
 # All rules below this point require the following properties to hold

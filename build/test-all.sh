@@ -1,19 +1,17 @@
 #!/bin/sh
+source "$(dirname $(readlink -f "$0"))/tools.sh"
 
 #
-# Variables
+# Test All
 #
-SCRIPT=$(readlink -f "$0")
-DIR="$(dirname $SCRIPT)"
-ROOT_DIR="$(dirname $DIR)"
-BUILD_DIR="${ROOT_DIR}/build"
-VERSIONS_DIR="${ROOT_DIR}/versions"
 
-#
-# Executing
-#
-for dirname in $(ls -d $VERSIONS_DIR/*/); 
+for dirname in $(getVersionPaths); 
 do 
-  version=$(basename $dirname); 
-  make -s -C "${BUILD_DIR}" VERSION=${version} test
+    version=$(basename $dirname); 
+
+    echo "########################################"
+    echo "# Version: $version"
+    echo "########################################"
+    
+    make -s -C "${BUILD_DIR}" VERSION=${version} test
 done
