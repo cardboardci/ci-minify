@@ -25,7 +25,7 @@ Scripts similar to these can be constructed using the `tools.sh` shell library, 
 
 ## Versioning
 
-Each image version is stored in its own directory in the `versions/` directory. Each directory name is the build name for the image tag. The `Makefile.options` file allows the setting of the variables.
+The image tags exist as definition files in the `versions/` directory. The `Makefile.options` file for each image tag allows the altering of variables in the build process. From the file the image tag is set, as well as any additional build parameters. Each `Makefile.options` file is stored in a directory named after the image version. The following is a `Makefile.options` file contained within the directory `versions/baseimage`:
 
 ```make
 TAG := baseimage
