@@ -10,7 +10,7 @@ TAG_SUFFIX ?=
 TAG_PREFIX ?=
 BUILD_PARAMETERS =
 
-include $(PATH_INFO)/*.variable
+include $(PATH_INFO)/Makefile.*.variable
 
 # Validation
 #

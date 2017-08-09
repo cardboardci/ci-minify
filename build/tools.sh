@@ -15,9 +15,9 @@ DIR_VERSIONS="$DIR_PROJECT/versions"
 # Functions
 #
 getDirectories() {
-    ls -d $1/*/
+    ls -d $1/*
 }
 
 getVersionPaths() {
-    ls -d $DIR_VERSIONS/*/
+    ls -d $DIR_VERSIONS/*
  }
