@@ -13,7 +13,7 @@ do
     echo "# Version: $version"
     echo "########################################"
     
-    make -s -C "${BUILD_DIR}" VERSION=${version} pull
-    make -s -C "${BUILD_DIR}" VERSION=${version} release
-    make -s -C "${BUILD_DIR}" VERSION=${version} deploy
+    make -s -C "${DIR_BUILD}" VERSION=${version} pull
+    make -s -C "${DIR_BUILD}" VERSION=${version} release
+    make -s -C "${DIR_BUILD}" VERSION=${version} deploy
 done

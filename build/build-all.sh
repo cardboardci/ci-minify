@@ -13,5 +13,5 @@ do
     echo "# Version: $version"
     echo "########################################"
     
-    make -s -C "${BUILD_DIR}" VERSION=${version} build
+    make -s -C "${DIR_BUILD}" VERSION=${version} build
 done
