@@ -1,9 +1,14 @@
-FROM jrbeverly/baseimage:golang
+FROM golang
 
 #
 # Build Arguments
 #
 ARG MINIFY_URL
+
+# 
+# Environment Variables
+#
+ENV HOME=/
 
 #
 # Provision
@@ -23,7 +28,11 @@ CMD []
 #
 # User
 #
+ARG DUID
+ARG DGID
 ARG USER
+
+RUN addgroup --gid ${DGID} --system docker && adduser --system --uid ${DUID} --gid ${DGID} docker
 USER $USER
 
 #
@@ -52,10 +61,12 @@ LABEL \
     org.label-schema.vcs-url="https://gitlab.com/jrbeverly-docker/docker-minify" \
     org.label-schema.docker.cmd="docker run -v $(pwd):/media/ jrbeverly/minify:baseimage minify index.html" \
     \
-    io.jrbeverly.project="minify" \
-    io.jrbeverly.summary="A docker image with librsvg installed, running as the $USER user." \
-    io.jrbeverly.minify.meta.BUILD_DATE="The Date/Time the image was built." \
-    io.jrbeverly.minify.meta.VERSION="Release identifier for the contents of the image." \
-    io.jrbeverly.minify.meta.VCS_REF="Identifier for the version of the source code from which this image was built." \
-    io.jrbeverly.minify.args.USER="Sets the [user](http://www.linfo.org/uid.html) to use when running the image." \
-    io.jrbeverly.minify.volume.media="/media/|The default working directory of the image."
+    org.doc-schema.summary="A docker image with librsvg installed, running as the $USER user." \
+    org.doc-schema.user=$DUID \
+    org.doc-schema.group=$DGID \
+    org.doc-schema.namespace="minify" \    
+    org.doc-schema.minify.meta.BUILD_DATE="The Date/Time the image was built." \
+    org.doc-schema.minify.meta.VERSION="Release identifier for the contents of the image." \
+    org.doc-schema.minify.meta.VCS_REF="Identifier for the version of the source code from which this image was built." \
+    org.doc-schema.minify.args.USER="Sets the [user](http://www.linfo.org/uid.html) to use when running the image." \
+    org.doc-schema.minify.volume.media="/media/|The default working directory of the image."
