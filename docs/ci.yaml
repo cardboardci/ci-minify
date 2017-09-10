@@ -1,0 +1,7 @@
+build:
+  image: jrbeverly/minify:baseimage
+  script:
+    - minify index.html
+  artifacts:
+    paths:
+      - index.html
