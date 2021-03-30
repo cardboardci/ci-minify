@@ -1,0 +1,22 @@
+slug: ci-minify
+description: '[DEPRECATED] A super small image with Minify. '
+project: cardboardci
+namespace: ci
+status: archived
+icon: icon.svg
+license:
+  type: MIT
+  content: Jonathan Beverly <jrbeverly>
+  year: 2017
+topics: |-
+  [
+    "web",
+    "web-compression",
+    "html",
+    "css",
+    "js",
+    "minify",
+    "docker",
+    "docker-image",
+    "ci-cd-pipeline"
+  ]
